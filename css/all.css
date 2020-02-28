@@ -1,0 +1,158 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  font-family: "微軟正黑體";
+  font-size: 16px;
+}
+
+ul {
+  margin: 0;
+  padding-left: 0;
+}
+
+header {
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));
+  background: linear-gradient(white, gainsboro);
+}
+
+header li {
+  display: inline-block;
+  padding: 20px;
+}
+
+header li:hover {
+  background: #ccc;
+}
+
+.cell {
+  display: none;
+}
+
+.search {
+  float: right;
+  padding: 13px;
+}
+
+.search:hover {
+  background-color: inherit;
+}
+
+.search input {
+  border-radius: 10px;
+  border: 1px #ccc solid;
+  padding: 10px 5px;
+  margin-right: 5px;
+}
+
+.search button {
+  border-radius: 6px;
+  padding: 8px 10px;
+  border: 1px solid #9a9a9a;
+}
+
+section {
+  padding: 50px;
+}
+
+.checkbox div {
+  display: inline-block;
+  margin: 10px;
+  width: 120px;
+}
+
+.table-response {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+th {
+  background-color: #989898;
+  padding: 10px;
+}
+
+td {
+  background-color: #ccc;
+  padding: 10px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+td:nth-child(1) {
+  text-align: left;
+}
+
+.page {
+  text-align: center;
+  margin: 30px;
+}
+
+.page div {
+  display: inline-block;
+  border: 1px solid #888;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.active-page {
+  background-color: #ccc;
+}
+
+.down {
+  position: relative;
+}
+
+.down ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 61px;
+}
+
+.down li {
+  background: #ccc;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.down:hover li:hover {
+  background-color: #df6f6f;
+}
+
+.down:hover ul {
+  display: block;
+}
+
+.down li:nth-child(odd) {
+  background-color: #909090;
+}
+
+.down2 {
+  position: relative;
+}
+
+.down2 ul {
+  display: none !important;
+  position: absolute;
+}
+
+.down2:hover ul {
+  display: block !important;
+  top: 0;
+  left: 88px;
+}
+
+.down2 li {
+  width: 100px;
+}
+
+.naxbox ul {
+  width: 100%;
+}
+
+.naxbox li {
+  display: block;
+  width: 100%;
+}
+/*# sourceMappingURL=all.css.map */
