@@ -1,0 +1,356 @@
+$blue: #569784;
+$gray: #f5f5f5;
+$black: #383838;
+$grayBlue: #a2b2ca;
+$l1: #affbc0;
+$l2: #fffbad;
+$l3: #ffd3ac;
+$l4: #ffb3b3;
+$l5: #d7cbff;
+$l6: #ffb6e3;
+
+*{
+  box-sizing: border-box;
+}
+body {
+  color: $black;
+  background-color: $gray;
+  font-family: "微軟正黑體", Arial, Helvetica, sans-serif;
+}
+.scrollbar{
+  &::-webkit-scrollbar {
+  width: 3px;
+  }
+  &::-webkit-scrollbar-track {
+  border-radius: 10px;
+  margin:80px 0 5px 0;
+  }
+  &::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background: rgb(219,219,219);
+  width: 3px;
+  }
+}
+.level1{
+  background-color: $l1;
+  color: darken($l1, 60%);
+  border-color: darken($l1, 60%) darken($l1, 60%) $grayBlue $grayBlue;
+}
+.level2{
+  background-color: $l2;
+  color: darken($l2,60%);
+  border-color: darken($l2, 60%) darken($l2, 60%) $grayBlue $grayBlue;
+}
+.level3{
+  background-color: $l3;
+  color: darken($l3,60%);
+  border-color: darken($l3, 60%) darken($l3, 60%) $grayBlue $grayBlue;
+}
+.level4{
+  background-color: $l4;
+  color: darken($l4,60%);
+  border-color: darken($l4, 60%) darken($l4, 60%) $grayBlue $grayBlue;
+}
+.level5{
+  background-color: $l5;
+  color: darken($l5,60%);
+  border-color: darken($l5, 60%) darken($l5, 60%) $grayBlue $grayBlue;
+}
+.level6{
+  background-color: $l6;
+  color: darken($l6,60%);
+  border-color: darken($l6, 60%) darken($l6, 60%) $grayBlue $grayBlue;
+}
+.bg{
+  background-color: $blue;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 30%;
+}
+.biggestTitle{
+  height: 100vh;
+  color: #fff;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  div{
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  h1{
+    letter-spacing: 5px;
+    font-weight: bolder;
+    writing-mode: vertical-lr;
+    margin-right: -4px;
+    margin-bottom: -10px;
+    font-size: 4.3rem;
+  }
+  i{
+    display: none;
+  }
+}
+.row-set{
+  height: 100vh;
+  justify-content: flex-end;
+}
+.inner{
+  background-color: #fff;
+  min-height: 674px;
+}
+.innerTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h2{
+    white-space: nowrap;
+    font-weight: bold;
+    margin-top: 20px;
+    color: darken($blue,10%);
+  }
+  i{
+    font-size: 2rem;
+    padding-left: 0 !important;
+    margin-left: -10px;
+  }
+}
+.selectAll{
+  background-color:  $grayBlue !important;
+}
+.select{
+  margin-top: 1rem;
+  margin-bottom: 30px;
+  position: relative;
+  div{
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue $blue lighten($blue,25%) lighten($blue,25%);
+  }
+  ul{
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue $blue lighten($blue,25%) lighten($blue,25%);
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    z-index: 30;
+    height: 230px;
+    overflow-y: scroll;
+  }
+  li{
+    cursor: pointer;
+    padding: 4px 15px;
+    &:hover{
+      background-color: lighten($blue,40%);
+    }
+  }
+}
+.statusBox{
+  padding: 0 15px;
+  margin-top: 1rem;
+}
+.statusItem{
+  padding: 0 5px;
+  div{
+    border-radius:8px;
+    padding-top: 7px;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    border-width: 2px;
+    border-style: solid;
+    font-weight: bold;
+    line-height: 19px;
+  }
+  i{
+    font-size: 1.5rem;
+    margin-bottom: 1px;
+  }
+}
+.checkbox-style{
+  .title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  h4{
+    color: lighten($blue,15%);
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  span{
+    cursor: pointer;
+    margin-left: 10px;
+    background-color: lighten($blue,15%);
+    color: #fff;
+    padding: 0 8px;
+    border-radius: 4px;
+  }
+  i{
+    margin-right: 7px;
+  }
+}
+.checkbox-item{
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  margin-top: 7px;
+  label{
+    margin-bottom: 0;
+    color: lighten($black,50%);
+    display: block;
+    padding: 1px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  input[type="checkbox"]{
+    display: none;
+  }
+  input[type="checkbox"]:checked + label{
+    background-color: $blue;
+    color: #fff;
+  }
+  div{
+    min-width: 126px;
+    display: inline-block;
+    padding: 2px;
+  }
+}
+.table-style{
+  background-color: #fff;
+  padding: 0 10px 5px;
+  border-radius: 25px;
+  overflow-x: scroll;
+  table{
+    margin-bottom: 0;
+  }
+  tbody tr{
+    &:hover{
+      background-color: lighten($l2,5%);
+    }
+  }
+  th{
+    color: lighten($blue,15%);
+    border: unset;
+    font-weight: 600;
+    padding-top: 5px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid lighten($blue,40%) !important;
+  }
+  td{
+    white-space: nowrap;
+    padding: 8px 12px;
+    border-top: unset;
+  }
+}
+.page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  div,i{
+    width: 37px;
+    text-align: center;
+    padding: 6px 0 5px;
+    margin: 0 5px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue $blue lighten($blue,25%) lighten($blue,25%);
+    cursor: pointer;
+    &:hover{
+      background: lighten($blue,40%);
+    }
+  }
+  i{
+    padding: 9px 0;
+  }
+  
+}
+.active{
+  background-color: $l2 !important;
+}
+
+@media(max-width:1200px){
+  .innerTitle h2{
+    font-size: 1.5rem;
+  }
+}
+@media(max-width:768px){
+  h4 {
+    font-size: 1.4rem;
+  }
+  .biggestTitle{
+    height: unset;
+    div{
+      height: unset;
+    }
+    h1{
+      font-size: 1.5rem;
+      writing-mode: unset;
+      margin: 17px 0 15px -30px;
+    }
+    i{
+      display: inline-block;
+    }
+  }
+  .statusBox{
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  .statusItem{
+    width: 33%;
+    div{
+      height: 77px;
+    }
+  }
+  .page{
+    flex-wrap: wrap;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    div,i{
+      display: inline-block;
+      margin: 2px;
+    }
+  }
+  .inner{
+    width: calc(100% - 30px);
+  }
+  .row-set{
+    height: unset;
+    justify-content: center;
+  }
+  .select {
+    margin-bottom: 3px;
+    margin-top: 10px;
+  }
+  .bg{
+    width: 85%;
+    height: 102vh;
+  }
+  .innerTitle{
+    display: none;
+  }
+}

@@ -6,97 +6,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>空氣品質表</title>
+  <link rel="stylesheet" href="css/cssreset.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <div class="contain-fluid" id="app">
+    <div class="bg">
+    </div>
 
-  <header>
-    <ul>
-      <li>LOGO</li>
-      <li class="cell"><i class="fas fa-bars"></i></li>
-      <li class="down cellno">空氣品質AQI
-        <ul id="menu_county">
-          <!-- <li class="down2">選單-4
-            <ul>
-              <li>選單-1</li>
-              <li>選單-2</li>
-            </ul>
-          </li> -->
-        </ul>
-      </li>
-      <li class="cellno">選單2</li>
-      <li class="cellno">選單3</li>
-      <li class="search cellno"><input type="text" id="search" onkeyup="search('13',event)" ><button onclick="search('2',event)">搜尋</button></li>
-    </ul>
-    <div class="cell naxbox">
-      <ul>
-        <li class="down ">空氣品質AQI
-          <ul id="menu_county2">
-            <!-- <li class="down2">選單-4
-              <ul>
-                <li>選單-1</li>
-                <li>選單-2</li>
+    <div class="row mr-0 ml-0 row-set">
+        <div class="biggestTitle">
+          <div>
+            <h1><i class="fab fa-cloudversify pr-2 pl-3"></i>空氣品質指標</h1>
+          </div>
+        </div>
+      <div class="col-md-9 inner align-self-center">
+
+        <div class="row mt-2 mb-3">
+          
+          <div class="col-lg-3 col-md-4">
+            <!---title--->
+            <div class="innerTitle">
+              <h2><i class="fab fa-cloudversify pr-2 pl-3"></i>台灣全區域</h2>
+            </div>
+            <!---select--->
+            <div class="select">
+              <div @click="selectToggle = !selectToggle">
+                {{selectArea}}
+                <i class="fas fa-caret-down"></i>
+              </div>
+              <ul v-show="selectToggle" @mouseleave="selectToggle = false">
+                <li @click="selectFunction('all')">台灣全區域</li>
+                <li v-for="(item,index) in counties" :key="item.SiteId"
+                    @click="selectFunction(item)">
+                  {{item}}
+                </li>
               </ul>
-            </li> -->
-          </ul>
-        </li>
-        <li>選單2</li>
-        <li>選單3</li>
-        <li class="search "><input type="text" id="search2" onkeyup="search('13',event)" ><button onclick="search('2',event)">搜尋</button></li>
-      </ul>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-8">
+            <!--checkbox-->
+            <div class="checkbox-style">
+              <div class="title">
+                <h4>資訊選擇</h4>
+                <span @click="selectAllFun" :class="{'selectAll':selectAll}"><i class="fas fa-check"></i>全部{{selectAll?'取消':'選取' }}</span>
+              </div>
+              <div class="checkbox-item">
+                <div v-for="(title,index) in checkboxTitleAry" :key=`th${index}`>
+                  <input type="checkbox" :name="title" :id="title" :checked="selectAll" @click="clickCheckbox(title)">
+                  <label :for="title"><i class="fas fa-check"></i>{{title}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4">
+            <!---aqi status--->
+            <div class="row statusBox">
+              <div class="col-md-6 statusItem" v-for="(item,index) in status" :key="'status'+index">
+                <div :class="item.color">
+                  <i class="far" :class="item.icon"></i>
+                  {{item.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-8">
+            <!--table-->
+            <div class="table-responsive table-style scrollbar mb-4">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th v-for="(baseTitle,index) in baseTitle" :key=`base${index}`>{{baseTitle}}</th>
+                    <th v-for="(title,index) in tableSelectTitle" :key=`th${index}`>{{title}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in tableData[page.nowPage-1]" :key="item.SiteId">
+                    <td v-for="(baseTitle,index) in baseTitle" :key=`base${index}`>{{item[baseTitle]}}</td>
+                    <td v-for="(title,index) in tableSelectTitle" :key=`th${index}`>{{item[title]}}</td>
+                  </tr> 
+                </tbody>
+              </table>
+            </div>
+
+            <!--page-->
+            <div class="page">
+              <i class="fas fa-angle-left" @click="changePage(-1)"></i>
+              <div v-for="index in page.totalPage" 
+                  :class="{'active': index === page.nowPage}"
+                  @click="changePage(index,'setNumber')">
+                  {{index}}
+              </div>
+              <i class="fas fa-angle-right" @click="changePage(1)"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-1">
+
+      </div>
     </div>
-  </header>
+  </div>
 
-  <section>
-    <div class="checkbox">
-      <!-- <div><input type="checkbox">123</div> -->
-    </div>
-
-    <h2><span id="tit1">台灣</span>-<span id="tit2">全區域</span>AQI</h2>
-
-    <div class="table-response">
-      <table>
-        <thead>
-          <tr>
-            <th>123</th>
-            <th>123</th>
-            <th>123</th>
-            <th>123</th>
-            <th>123</th>
-            <th>123</th>
-            <th>123</th>
-            <th>123</th>
-            <th>123</th>
-            <th>123</th>
-            <th>123</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>0001</td>
-            <td>00002</td>
-          </tr>
-          <tr>
-            <td>0000</td>
-            <td>0000</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="page">
-      <!-- <div class="active-page">1</div>
-      <div>1</div>
-      <div>1</div> -->
-    </div>
-
-  </section>
-
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-  <script src="js/style.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="js/set.js"></script>
 </body>
 
 </html>
