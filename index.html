@@ -40,7 +40,8 @@
               </div>
               <ul v-show="selectToggle" @mouseleave="selectToggle = false">
                 <li @click="selectFunction('all')">台灣全區域</li>
-                <li v-for="(item,index) in counties" :key="item.SiteId"
+                <li v-for="(item,index) in counties" 
+                    :key="item.SiteId"
                     @click="selectFunction(item)">
                   {{item}}
                 </li>

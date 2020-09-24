@@ -39,10 +39,10 @@ var app = new Vue({
   },
   methods: {
     async api(){
-      const cors = 'https://cors-anywhere.herokuapp.com/';
-      const aqi1 = 'http://opendata.epa.gov.tw/webapi/Data/REWIQA/?$orderby=SiteName&$skip=0&$top=1000&format=json';
-      // const url = 'aqi.json';
-      const url = "`${cors}${aqi1}`";
+      // const cors = 'https://cors-anywhere.herokuapp.com/';
+      // const aqi1 = 'http://opendata.epa.gov.tw/webapi/Data/REWIQA/?$orderby=SiteName&$skip=0&$top=1000&format=json';
+      // const url = `${cors}${aqi1}`;
+      const url = 'aqi.json';
       await fetch(url).then(res => {
         return res.json();
       }).then(res => {
@@ -51,9 +51,8 @@ var app = new Vue({
         this.filterTitle();
         this.selectTableTitle();
         this.sortPage(res);
-        console.log(res)
       }).catch(err => {
-        console.log(err)
+        console.error(err)
       });
     },
     filterTitle(){
