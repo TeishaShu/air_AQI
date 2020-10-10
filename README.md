@@ -1,5 +1,5 @@
 # 空氣品質指標
-從設計到前端的製作
+使用政府的空氣品質資料做塞選，並思考畫面的設計、操作與選單功能。
 
 ## DEMO
 https://teishashu.github.io/air_AQI/
